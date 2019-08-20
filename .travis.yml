@@ -6,3 +6,4 @@ services:
 install:
   - docker version
   - docker build .
+  - docker ps -a
