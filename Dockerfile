@@ -5,4 +5,5 @@ FROM alpine:$ALPINE_TAG
 SHELL ["/bin/sh", "-exc"]
 
 RUN apk upgrade --no-cache; \
-    apk add --no-cache su-exec tzdata;
+    apk add --no-cache su-exec tzdata; \
+    rm -rf "/var/lib/apk/"* "/var/cache/apk/"* "/var/tmp/"* "/tmp/"* "/root/".??* "/root/"*
