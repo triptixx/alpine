@@ -4,5 +4,6 @@ services:
   - docker
 
 install:
-  - docker build .
+  - docker build -t loxoo/alpine .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push loxoo/alpine
