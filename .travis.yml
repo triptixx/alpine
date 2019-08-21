@@ -4,6 +4,5 @@ services:
   - docker
 
 install:
-  - docker version
   - docker build .
-  - docker images
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
