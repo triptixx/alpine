@@ -6,6 +6,7 @@ services:
 script:
   - docker build -t alpine-dev .
   - docker run alpine-dev cat /etc/alpine-release
+  - docker tag alpine-dev $DOCKER_USERNAME/alpine
 
 after_script:
   - docker images
