@@ -3,16 +3,18 @@ language: minimal
 services:
   - docker
 
-stages: 
-  - name: build
-    script:
-      - docker build -t alpine-dev .
-      - docker images
-  - name: test
-    script:
-      - docker run --rm alpine-dev cat /etc/alpine-release 
-  - name: publish
-    script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker tag alpine-dev $DOCKER_USERNAME/alpine
-      - docker push $DOCKER_USERNAME/alpine
+jobs:
+  include:
+    - stage: docker instance
+      name: build
+      script:
+        - docker build -t alpine-dev .
+        - docker images
+    - name: test
+      script:
+        - docker run --rm alpine-dev cat /etc/alpine-release 
+    - name: publish
+      script:
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - docker tag alpine-dev $DOCKER_USERNAME/alpine
+        - docker push $DOCKER_USERNAME/alpine
