@@ -3,3 +3,8 @@ language: none
 branches:
   only:
     - master
+
+integrations:
+  hub:
+    - integrationName: DockerHub
+      type: dockerRegistryLogin
