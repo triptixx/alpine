@@ -1,18 +1,35 @@
-version: 2
+version: 2.1
+
+executors:
+  my-executor:
+    machine: true
+
 jobs:
- build:
-   machine: true
-   steps:
-     - checkout
-     - run: 
-         name: Tests 1
-         command: |
-           docker images
-     - run:
-         name: Tests 2
-         command: |
-           docker build -t ${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} .
-     - run: 
-         name: Tests 3
-         command: |
-           docker images
+  clone:
+    executor: my-executor
+    steps:
+      - checkout
+
+  build:
+    executor: my-executor
+    steps:
+      - run: |
+          docker images
+
+  test:
+    executor: my-executor
+    steps:
+      - run: |
+          ls -al
+
+workflows:
+  version: 2
+  pipeline_alpine:
+    jobs:
+      - clone
+      - build
+          requires:
+            - clone
+      - test
+          requires:
+            - build
