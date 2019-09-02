@@ -9,10 +9,12 @@ jobs:
     executor: my-executor
     steps:
       - checkout
+      - persist_to_workspace
 
   build:
     executor: my-executor
     steps:
+      - attach_workspace:
       - run: |
           docker build -t ${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} .
 
