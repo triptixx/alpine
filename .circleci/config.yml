@@ -1,23 +1,6 @@
 version: 2
 jobs:
-  unit_test:
-    docker:
-      - image: busybox:latest
-    steps:
-      - run:
-          name: Unit Test
-          command: echo "Going to run Unit Test"
-  linting:
-    docker:
-      - image: busybox:latest
-    steps:
-      - run:
-          name: Lint Test
-          command: echo "Going to run Lint Test"
-
-workflows:
-  version: 2
-  sample_pipeline:
-    jobs:
-      - unit_test
-      - linting
+ build:
+   machine: true
+   steps:
+     - checkout
