@@ -14,7 +14,7 @@ jobs:
   build:
     executor: my-executor
     steps:
-      - attach_workspace:
+      - attach_workspace
       - run: |
           docker build -t ${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} .
 
