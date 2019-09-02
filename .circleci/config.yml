@@ -14,13 +14,13 @@ jobs:
     executor: my-executor
     steps:
       - run: |
-          docker images
+          docker build -t ${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} .
 
   test:
     executor: my-executor
     steps:
       - run: |
-          ls -al
+          docker images
 
 workflows:
   pipeline_alpine:
