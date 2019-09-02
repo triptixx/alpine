@@ -17,7 +17,12 @@ env:
     - ALPINE_TAG: ['3.10','latest']
 
 build:
-  ci:
-    - echo "building image ${ORG_NAME}/${REPO_NAME}:${ALPINE_TAG%%,*}"
+  pre_ci:
+#    - echo "building image ${ORG_NAME}/${REPO_NAME}:${ALPINE_TAG%%,*}"
     - docker build --build-arg ALPINE_TAG=${ALPINE_TAG%%,*} -t ${ORG_NAME}/${REPO_NAME}:${ALPINE_TAG%%,*} .
-    - docker images
+  pre_ci_boot:
+    image_name: ${ORG_NAME}/${REPO_NAME}
+    image_tag: ${ALPINE_TAG%%,*}
+    pull: true
+  ci:
+    - su-exec nobody apk --version
