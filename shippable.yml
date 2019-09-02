@@ -15,11 +15,9 @@ env:
     - ALPINE_TAG: '3.8'
     - ALPINE_TAG: '3.9'
     - ALPINE_TAG: ['3.10','latest']
-#    - TEST=1 FOO=foo
 
 build:
   ci:
-    - 'echo "building image ${ORG_NAME}/${REPO_NAME}:${ALPINE_TAG%%,*}"'
-#    - 'docker images'
-#  post_ci:
-#    - docker build --build-arg ALPINE_TAG=${ALPINE_TAG} -t ${ORG_NAME}/${REPO_NAME}:${ALPINE_TAG} .
+    - echo "building image ${ORG_NAME}/${REPO_NAME}:${ALPINE_TAG%%,*}"
+    - docker build --build-arg ALPINE_TAG=${ALPINE_TAG} -t ${ORG_NAME}/${REPO_NAME}:${ALPINE_TAG%%,*} .
+    - docker images
