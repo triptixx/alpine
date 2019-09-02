@@ -8,3 +8,13 @@ integrations:
   hub:
     - integrationName: DockerHub
       type: dockerRegistryLogin
+
+env:
+  matrix:
+    - ALPINE_TAG: 3.8
+    - ALPINE_TAG: 3.9
+    - ALPINE_TAG: 3.10
+
+build:
+  ci:
+    - 'echo "building image ${ALPINE_TAG}"'
