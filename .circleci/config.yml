@@ -23,7 +23,6 @@ jobs:
           ls -al
 
 workflows:
-  version: 2
   pipeline_alpine:
     jobs:
       - clone
