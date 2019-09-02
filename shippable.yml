@@ -18,7 +18,8 @@ env:
 #    - TEST=1 FOO=foo
 
 build:
-#  post_ci:
-#    - docker build --build-arg ALPINE_TAG=${ALPINE_TAG} -t ${ORG_NAME}/my_image:${ALPINE_TAG} .
+  post_ci:
+    - docker build --build-arg ALPINE_TAG=${ALPINE_TAG} -t ${ORG_NAME}/${REPO_NAME}:${ALPINE_TAG} .
   ci:
-    - 'echo "building image ${ALPINE_TAG} ${ORG_NAME}/${REPO_NAME}"'
+    - 'echo "building image ${ORG_NAME}/${REPO_NAME}:${ALPINE_TAG}"'
+    - 'docker images'
