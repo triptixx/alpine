@@ -14,7 +14,7 @@ env:
     - ALPINE_TAG: '3.7'
     - ALPINE_TAG: '3.8'
     - ALPINE_TAG: '3.9'
-    - ALPINE_TAG: '3.10',latest
+    - ALPINE_TAG: ['3.10','latest']
 #    - TEST=1 FOO=foo
 
 build:
