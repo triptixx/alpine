@@ -5,6 +5,14 @@ jobs:
    steps:
      - checkout
      - run: 
-         name: Run Tests
+         name: Tests 1
+         command: |
+           docker images
+     - run:
+         name: Tests 2
+         command: |
+           docker build -t ${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} .
+     - run: 
+         name: Tests 3
          command: |
            docker images
