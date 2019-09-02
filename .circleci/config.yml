@@ -26,9 +26,9 @@ workflows:
   pipeline_alpine:
     jobs:
       - clone
-      - build
+      - build:
           requires:
             - clone
-      - test
+      - test:
           requires:
             - build
