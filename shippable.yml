@@ -19,5 +19,5 @@ env:
 build:
   ci:
     - echo "building image ${ORG_NAME}/${REPO_NAME}:${ALPINE_TAG%%,*}"
-    - docker build --build-arg ALPINE_TAG=${ALPINE_TAG} -t ${ORG_NAME}/${REPO_NAME}:${ALPINE_TAG%%,*} .
+    - docker build --build-arg ALPINE_TAG=${ALPINE_TAG%%,*} -t ${ORG_NAME}/${REPO_NAME}:${ALPINE_TAG%%,*} .
     - docker images
