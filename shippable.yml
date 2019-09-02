@@ -11,11 +11,10 @@ integrations:
 
 env:
   matrix:
-    - ALPINE_TAG:
-      - 3.7
-      - 3.8
-      - 3.9
-      - 3.10
+    - ALPINE_TAG: 3.7
+    - ALPINE_TAG: 3.8
+    - ALPINE_TAG: 3.9
+    - ALPINE_TAG: 3.10
 
 build:
   ci:
