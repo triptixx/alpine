@@ -7,6 +7,6 @@ ENV ENV="/etc/profile"
 SHELL ["/bin/sh", "-exc"]
 
 RUN apk upgrade --no-cache; \
-    apk add --no-cache su-exec tzdata sudo;
+    apk add --no-cache su-exec tzdata;
 
 COPY rootfs/ /
