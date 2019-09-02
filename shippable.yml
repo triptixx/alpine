@@ -23,6 +23,6 @@ build:
   pre_ci_boot:
     image_name: ${ORG_NAME}/${REPO_NAME}
     image_tag: ${ALPINE_TAG%%,*}
-    pull: true
+    pull: false
   ci:
     - su-exec nobody apk --version
