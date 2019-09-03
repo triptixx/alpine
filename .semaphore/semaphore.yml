@@ -3,21 +3,15 @@
 # https://docs.semaphoreci.com/category/58-programming-languages
 # https://docs.semaphoreci.com/category/56-guided-tour
 version: v1.0
-name: Hello Semaphore
+name: docker alpine
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Simple example
+  - name: test docker build
     task:
-      env_vars:
-        - name: APP_ENV
-          value: prod
       jobs:
-      - name: Download our code
+      - name: build
         commands:
-          - echo "Hello from Semaphore!"
-          - echo $APP_ENV
-          - checkout
-          - ls -alh
+          - docker build -t triptixx:alpine .
