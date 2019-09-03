@@ -1,0 +1,45 @@
+version: "1.0"
+steps:
+  main_clone:
+    type: "git-clone"
+    title: "Cloning main repository"
+    git: "github"
+    repo: "${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}"
+    revision: "${{CF_REVISION}}"
+  build:
+    type: "build"
+    title: "Building Docker Image"
+    image_name: "${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}"
+    tag: "${{CF_BRANCH_TAG_NORMALIZED}}"
+  test:
+    title: "Running Unit tests"
+    image: "${{build}}"
+    commands:
+      - "su-exec nobody apk --version"
+    on_success:
+      metadata:
+        set:
+          - "${{build.imageId}}":
+            - CF_QUALITY: true
+    on_fail:
+      metadata:
+        set:
+          - "${{build.imageId}}":
+            - CF_QUALITY: false
+  publish:
+    type: "push"
+    title: "Pushing to a registry"
+    candidate: "${{build}}"
+    image_name: "${{DOCKER_USERNAME}}/${{CF_REPO_NAME}}"
+    registry: "dockerhub"
+    tags:
+      - "3.10"
+      - "latest"
+    when:
+      branch:
+        only:
+          - master
+      steps:
+        - name: test
+          on:
+            - success
