@@ -10,4 +10,3 @@ RUN apk upgrade --no-cache; \
     apk add --no-cache su-exec tzdata;
 
 COPY rootfs/ /
-
