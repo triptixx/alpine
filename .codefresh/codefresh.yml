@@ -1,5 +1,14 @@
 version: "1.0"
 
+indicators:
+  - publish: &push
+      type: "push"
+      stage: "publish"
+      title: "Pushing to a registry"
+      candidate: "${{build}}"
+      image_name: "${{DOCKER_USERNAME}}/${{CF_REPO_NAME}}"
+      registry: dockerhub
+
 stages:
   - clone
   - build
@@ -38,37 +47,28 @@ steps:
         set:
           - "${{build.imageId}}":
             - CF_QUALITY: false
-  publish:
-    type: parallel
-    stage: "publish"
-    steps:
-      publishtag:
-        type: "push"
-        title: "Pushing to a registry"
-        candidate: "${{build}}"
-        image_name: "${{DOCKER_USERNAME}}/${{CF_REPO_NAME}}"
-        credentials:
-          username: "${{DOCKER_USERNAME}}"
-          password: "${{DOCKER_PASSWORD}}"
-        tag: "${{ALPINE_TAG}}"
-      publishlatest:
-        type: "push"
-        title: "Pushing to a registry"
-        candidate: "${{build}}"
-        image_name: "${{DOCKER_USERNAME}}/${{CF_REPO_NAME}}"
-        credentials:
-          username: "${{DOCKER_USERNAME}}"
-          password: "${{DOCKER_PASSWORD}}"
-        tag: "latest"
-        when:
-          condition:
-            all:
-              islatest: '"${{LATEST}}" == "true"'
+  publishtag:
+    <<: *push
+    tag: "${{ALPINE_TAG}}"
     when:
       branch:
         only:
           - master
-        steps:
-          - name: "test"
-            on:
-              - success
+      steps:
+        - name: "test"
+          on:
+            - success
+  publishlatest:
+    <<: *push
+    tag: "latest"
+    when:
+      branch:
+        only:
+          - master
+      steps:
+        - name: "test"
+          on:
+            - success
+      condition:
+        all:
+          islatest: '"${{LATEST}}" == "true"'
