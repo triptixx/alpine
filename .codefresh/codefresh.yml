@@ -8,6 +8,14 @@ indicators:
       candidate: "${{build}}"
       image_name: "${{DOCKER_USERNAME}}/${{CF_REPO_NAME}}"
       registry: dockerhub
+  - when: &condition
+      branch:
+        only:
+          - master
+      steps:
+        - name: "test"
+          on:
+            - success
 
 stages:
   - clone
@@ -50,25 +58,12 @@ steps:
   publishtag:
     <<: *push
     tag: "${{ALPINE_TAG}}"
-    when:
-      branch:
-        only:
-          - master
-      steps:
-        - name: "test"
-          on:
-            - success
+    when: *condition
   publishlatest:
     <<: *push
     tag: "latest"
     when:
-      branch:
-        only:
-          - master
-      steps:
-        - name: "test"
-          on:
-            - success
+      <<: *condition
       condition:
         all:
           islatest: '"${{LATEST}}" == "true"'
