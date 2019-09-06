@@ -1,6 +1,12 @@
 ARG ALPINE_TAG=3.10
 
-FROM alpine:$ALPINE_TAG
+FROM alpine:${ALPINE_TAG}
+
+ARG BUILD_DATE \
+    VCS_REF \
+    VCS_URL \
+    VENDOR \
+    ALPINE_TAG
 
 LABEL org.label-schema.build-date=${BUILD_DATE} \
       org.label-schema.name="Alpine Linux" \
