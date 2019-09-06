@@ -8,15 +8,6 @@ ARG VCS_URL
 ARG VENDOR
 ARG ALPINE_TAG
 
-ENV ENV="/etc/profile"
-
-SHELL ["/bin/sh", "-exc"]
-
-RUN apk upgrade --no-cache; \
-    apk add --no-cache su-exec tzdata;
-
-COPY rootfs/ /
-
 LABEL org.label-schema.build-date=${BUILD_DATE} \
       org.label-schema.name="Alpine Linux" \
       org.label-schema.description="Alpine Linux base image" \
@@ -26,3 +17,12 @@ LABEL org.label-schema.build-date=${BUILD_DATE} \
       org.label-schema.vendor=${VENDOR} \
       org.label-schema.version=${ALPINE_TAG} \
       org.label-schema.schema-version="1.0"
+
+ENV ENV="/etc/profile"
+
+SHELL ["/bin/sh", "-exc"]
+
+RUN apk upgrade --no-cache; \
+    apk add --no-cache su-exec tzdata;
+
+COPY rootfs/ /
