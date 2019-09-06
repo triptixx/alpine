@@ -39,7 +39,8 @@ steps:
     tag: "${{ALPINE_TAG}}"
     build_arguments:
       - ALPINE_TAG=${{ALPINE_TAG}}
-      - BUILD_DATE=`date -d @$((${{CF_BUILD_TIMESTAMP}} / 1000)) +'%Y-%m-%dT%H:%M:%SZ'`
+#      - BUILD_DATE=`date -d @$((${{CF_BUILD_TIMESTAMP}} / 1000)) +'%Y-%m-%dT%H:%M:%SZ'`
+      - BUILD_DATE=${{CF_BUILD_TIMESTAMP}}
       - VCS_REF=${{CF_SHORT_REVISION}}
       - VCS_URL=https://github.com/${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}
       - VENDOR=${{CF_REPO_OWNER}}
