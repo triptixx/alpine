@@ -5,7 +5,7 @@ on:
       - master
 
 jobs:
-  build:
+  pipeline:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -40,7 +40,7 @@ jobs:
           alpine_tag: ${{matrix.alpine_tag}}
         uses: actions/docker/cli@master
         with:
-          args: run ${owner}/${repo}-dev:${alpine_tag%%,*} su-exec nobody apk --version
+          args: run ${owner}/${repo}-dev:${alpine_tag%%,*} su-exe nobody apk --version
       - name: publish
         run: echo "king of the world !!"
         if: success()
