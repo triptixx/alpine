@@ -12,12 +12,14 @@ jobs:
           - 3.7
           - 3.8
           - 3.9
-          - 3.10
+          - 3.10,latest
     runs-on: ubuntu-latest
     steps:
       - name: clone
         uses: actions/checkout@master
       - name: build
+        env:
+          ALPINE_TAG: ${{matrix.alpine_tag}}
         uses: actions/docker/cli@master
         with:
-          args: build --build-arg ALPINE_TAG=${{matrix.alpine_tag}} -t ${{github.repository}}:${{matrix.alpine_tag}} .
+          args: build --build-arg ALPINE_TAG=${ALPINE_TAG%%,*} -t ${{github.repository}}:${ALPINE_TAG%%,*} .
