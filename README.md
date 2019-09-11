@@ -11,4 +11,4 @@
 [![Docker Stars](https://img.shields.io/docker/stars/loxoo/alpine.svg)][hub]
 [![Docker Pulls](https://img.shields.io/docker/pulls/loxoo/alpine.svg)][hub]
 [![Build Status](https://g.codefresh.io/api/badges/pipeline/triptixx/loxoo%2Falpine?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NWQ2N2RkMGUzMDViNTY2OTI1ZjMxMDBh.jW8RFG5NjJ68Tn0OAxkQJYdQyLQ5dogzco_FC_8yazk&type=cf-1)][codefresh]
-[![Build Status](https://github.com/triptixx/alpine/workflows/Greet%20Everyone/badge.svg)][actions]
+[![Build Status](https://github.com/triptixx/alpine/workflows/docker%20build/badge.svg)][actions]
