@@ -13,4 +13,4 @@ jobs:
       - name: build
         uses: actions/docker/cli@master
         with:
-          args: build -t ${{ GITHUB_REPOSITORY }} .
+          args: build -t ${GITHUB_REPOSITORY} .
