@@ -24,4 +24,4 @@ jobs:
           repo: ${{github.event.repository.name}}
         uses: actions/docker/cli@master
         with:
-          args: build --build-arg ALPINE_TAG=${ALPINE_TAG%%,*} -t ${OWNER}/${REPO}-dev:${ALPINE_TAG%%,*} .
+          args: build --build-arg ALPINE_TAG=${alpine_tag%%,*} -t ${owner}/${repo}-dev:${alpine_tag%%,*} .
