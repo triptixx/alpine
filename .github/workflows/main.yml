@@ -40,4 +40,4 @@ jobs:
           alpine_tag: ${{matrix.alpine_tag}}
         uses: actions/docker/cli@master
         with:
-          args: run -d ${owner}/${repo}-dev:${alpine_tag%%,*} su-exec nobody apk --version
+          args: run ${owner}/${repo}-dev:${alpine_tag%%,*} su-exec nobody apk --version
