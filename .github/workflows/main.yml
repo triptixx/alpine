@@ -6,6 +6,13 @@ on:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        alpine_tag:
+          - 3.7
+          - 3.8
+          - 3.9
+          - 3.10
     runs-on: ubuntu-latest
     steps:
       - name: clone
@@ -13,4 +20,4 @@ jobs:
       - name: build
         uses: actions/docker/cli@master
         with:
-          args: build -t ${{github.repository}} .
+          args: build --build-arg ALPINE_TAG=${{matrix.alpine_tag}} -t ${{github.repository}}:${{matrix.alpine_tag}} .
