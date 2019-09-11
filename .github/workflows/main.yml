@@ -24,4 +24,4 @@ jobs:
         with:
           args: build --build-arg ALPINE_TAG=${ALPINE_TAG%%,*} -t ${{github.repository}}-dev:${ALPINE_TAG%%,*} .
       - name: test
-        run: echo ${{github}}
+        run: echo ${{toJson(github)}}
