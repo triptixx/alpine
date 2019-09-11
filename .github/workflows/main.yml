@@ -41,3 +41,6 @@ jobs:
         uses: actions/docker/cli@master
         with:
           args: run ${owner}/${repo}-dev:${alpine_tag%%,*} su-exec nobody apk --version
+      - name: publish
+        run: echo "king of the world !!"
+        if: success()
