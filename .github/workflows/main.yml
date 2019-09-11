@@ -14,17 +14,17 @@ jobs:
           - 3.8
           - 3.9
           - 3.10,latest
-    env:
-      owner: ${{github.event.repository.owner.name}}
-      repo: ${{github.event.repository.name}}
-      alpine_tag: ${{matrix.alpine_tag}}
-      build_date: ${{github.event.commits[0].timestamp}}
-      vcs_ref: ${{github.sha}}
-      vcs_url: ${{github.event.repository.url}}
     steps:
       - name: clone
         uses: actions/checkout@master
       - name: build
+        env:
+          owner: ${{github.event.repository.owner.name}}
+          repo: ${{github.event.repository.name}}
+          alpine_tag: ${{matrix.alpine_tag}}
+          build_date: ${{github.event.commits[0].timestamp}}
+          vcs_ref: ${{github.sha}}
+          vcs_url: ${{github.event.repository.url}}
         uses: actions/docker/cli@master
         with:
           args: build --build-arg ALPINE_TAG=${alpine_tag%%,*}
