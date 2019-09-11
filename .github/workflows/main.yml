@@ -34,6 +34,10 @@ jobs:
                 --build-arg VENDOR=${owner}
                 -t ${owner}/${repo}-dev:${alpine_tag%%,*} .
       - name: test
+        env:
+          owner: ${{github.event.repository.owner.name}}
+          repo: ${{github.event.repository.name}}
+          alpine_tag: ${{matrix.alpine_tag}}
         uses: actions/docker/cli@master
         with:
           args: run -d ${owner}/${repo}-dev:${alpine_tag%%,*} su-exec nobody apk --version
