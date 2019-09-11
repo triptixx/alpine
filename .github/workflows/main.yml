@@ -22,13 +22,13 @@ jobs:
           owner: ${{github.event.repository.owner.name}}
           repo: ${{github.event.repository.name}}
           alpine_tag: ${{matrix.alpine_tag}}
-          build_date: $(date -d "${{github.event.commits[0].timestamp}}" +"%Y-%m-%dT%H:%M:%SZ")
+          build_date: ${{github.event.commits[0].timestamp}}
           vcs_ref: ${{github.sha}}
           vcs_url: ${{github.event.repository.url}}
         uses: actions/docker/cli@master
         with:
           args: build --build-arg ALPINE_TAG=${alpine_tag%%,*}
-                --build-arg BUILD_DATE=${build_date}
+                --build-arg BUILD_DATE=`date -d "${build_date}" +"%Y-%m-%dT%H:%M:%SZ"`
                 --build-arg VCS_REF=${vcs_ref:0:7}
                 --build-arg VCS_URL=${vcs_url}
                 --build-arg VENDOR=${owner}
