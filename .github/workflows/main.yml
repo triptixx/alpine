@@ -19,9 +19,9 @@ jobs:
         uses: actions/checkout@master
       - name: build
         env:
-          ALPINE_TAG: ${{matrix.alpine_tag}}
+          alpine_tag: ${{matrix.alpine_tag}}
+          owner: ${{github.event.repository.owner.name}}
+          repo: ${{github.event.repository.name}}
         uses: actions/docker/cli@master
         with:
-          args: build --build-arg ALPINE_TAG=${ALPINE_TAG%%,*} -t ${{github.repository}}-dev:${ALPINE_TAG%%,*} .
-      - name: test
-        run: echo ${{github.event.repository.name}}
+          args: build --build-arg ALPINE_TAG=${ALPINE_TAG%%,*} -t ${OWNER}/${REPO}-dev:${ALPINE_TAG%%,*} .
