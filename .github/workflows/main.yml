@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         alpine_tag:
@@ -13,7 +14,6 @@ jobs:
           - 3.8
           - 3.9
           - 3.10,latest
-    runs-on: ubuntu-latest
     steps:
       - name: clone
         uses: actions/checkout@master
@@ -33,3 +33,7 @@ jobs:
                 --build-arg VCS_URL=${vcs_url}
                 --build-arg VENDOR=${owner}
                 -t ${owner}/${repo}-dev:${alpine_tag%%,*} .
+      - name: test
+        uses: actions/docker/cli@master
+        with:
+          args: run -d ${owner}/${repo}-dev:${alpine_tag%%,*} su-exec nobody apk --version
