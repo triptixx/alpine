@@ -15,8 +15,8 @@ jobs:
           - 3.9
           - 3.10,latest
     steps:
-      - name: clone
-        uses: actions/checkout@master
+      #- name: clone
+      #  uses: actions/checkout@master
       - name: build
         env:
           owner: ${{github.event.repository.owner.name}}
