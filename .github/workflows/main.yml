@@ -5,7 +5,7 @@ on:
       - master
 
 jobs:
-  pipeline:
+  Job1:
     runs-on: ubuntu-latest
     strategy:
       matrix:
