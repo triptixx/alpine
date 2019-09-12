@@ -43,6 +43,4 @@ jobs:
           args: run ${owner}/${repo}-dev:${alpine_tag%%,*} su-exec nobody apk --version
       - name: publish
         uses: triptixx/action-docker-build@master
-        with:
-          args: test
         if: success()
