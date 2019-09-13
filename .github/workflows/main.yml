@@ -19,8 +19,8 @@ jobs:
         uses: actions/checkout@master
       - name: build
         uses: triptixx/action-docker-build@master
-        env:
+        with:
           repo: alpine-dev
           build_args:
-            - 3.9
-            - 3.7
+            test: 3.7
+            test2: 3.8
