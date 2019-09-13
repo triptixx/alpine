@@ -19,7 +19,9 @@ jobs:
       - name: clone
         uses: actions/checkout@master
       - name: build
+        env:
+          alpine_tag: ${{ matrix.alpine_tag }}
         uses: triptixx/action-docker-build@master
         with:
           repo: alpine-dev
-          build_args: ALPINE_TAG=${{ matrix.alpine_tag }}
+          build_args: ALPINE_TAG=${alpine_tag%%,*}
