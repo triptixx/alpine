@@ -23,3 +23,4 @@ jobs:
           repo: alpine-dev
           build_args:
             - 3.9
+            - 3.7
