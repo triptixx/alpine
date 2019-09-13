@@ -22,4 +22,4 @@ jobs:
         with:
           repo: alpine-dev
           build_args:
-            - ALPINE_TAG: ${ALPINE_TAG%%,*}
+            - ALPINE_TAG: '3.9'
