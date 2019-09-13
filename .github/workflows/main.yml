@@ -19,5 +19,5 @@ jobs:
         uses: actions/checkout@master
       - name: build
         uses: triptixx/action-docker-build@master
-        env:
-          TEST: ${{github.event.repository.owner.name}}
+        with:
+          test: ${{github.event.repository.owner.name}}
