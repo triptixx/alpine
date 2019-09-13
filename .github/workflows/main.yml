@@ -21,4 +21,5 @@ jobs:
         uses: triptixx/action-docker-build@master
         with:
           repo: alpine-dev
-          build_args: ALPINE_TAG=3.9, TEST=3.10
+          build_args:
+          - ALPINE_TAG=3.9
