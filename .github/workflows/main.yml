@@ -22,4 +22,4 @@ jobs:
         with:
           repo: alpine-dev
           build_args:
-            - test: 'test'
+            alpine_tag: ${{matrix.alpine_tag}}
