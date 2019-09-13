@@ -22,4 +22,4 @@ jobs:
         with:
           repo: alpine-dev
           build_args:
-            alpine_tag: ${{matrix.alpine_tag}}
+            - ALPINE_TAG=3.9
