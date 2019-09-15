@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@master
       - name: var
         run: |
-          TEST=${{ matrix.alpine_tag }}
+          export TEST=${{ matrix.alpine_tag }}
           set
       - name: build
         uses: triptixx/action-docker-build@master
