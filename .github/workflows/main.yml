@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: clone
         uses: actions/checkout@master
+      - name: var
+        run: TEST=${{ matrix.alpine_tag }}
       - name: build
         env:
           tag: ${{ matrix.alpine_tag }}
@@ -25,5 +27,4 @@ jobs:
         with:
           repo: alpine-dev
           build_args: ALPINE_TAG=${{ matrix.alpine_tag }}
-          test: ${tag}
-          args: ${tag}
+          test: ${TEST}
