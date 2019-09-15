@@ -19,10 +19,10 @@ jobs:
       - name: clone
         uses: actions/checkout@master
       - name: var
-        run: TEST=${{ matrix.alpine_tag }}
+        run: |
+          TEST=${{ matrix.alpine_tag }}
+          set
       - name: build
-        env:
-          tag: ${{ matrix.alpine_tag }}
         uses: triptixx/action-docker-build@master
         with:
           repo: alpine-dev
