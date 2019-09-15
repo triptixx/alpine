@@ -26,3 +26,4 @@ jobs:
           repo: alpine-dev
           build_args: ALPINE_TAG=${{ matrix.alpine_tag }}
           test: ${tag}
+          args: ${tag}
