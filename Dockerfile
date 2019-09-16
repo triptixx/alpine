@@ -14,7 +14,6 @@ ENV ENV="/etc/profile"
 SHELL ["/bin/sh", "-exc"]
 
 RUN apk upgrade --no-cache; \
-    apk add --no-cache su-exec tzdata; \
-    ls -al /github/workspace;
+    apk add --no-cache su-exec tzdata;
 
 COPY rootfs/ /
