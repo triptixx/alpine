@@ -18,13 +18,12 @@ jobs:
     steps:
       - name: clone
         uses: actions/checkout@master
-      - name: var
-        run: |
-          export TEST=${{ matrix.alpine_tag }}
-          set
       - name: build
         uses: triptixx/action-docker-build@master
         with:
           repo: alpine-dev
           build_args: ALPINE_TAG=${{ matrix.alpine_tag }}
-          test: ${TEST}
+      - name: test
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
