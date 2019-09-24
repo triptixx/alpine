@@ -16,7 +16,7 @@ jobs:
           - 3.10
           - edge
         include:
-          - alpine_tag: 3.10
+          - alpine_tag: '3.10'
             latest: true
     steps:
       - name: test
