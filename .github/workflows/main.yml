@@ -21,8 +21,8 @@ jobs:
       - name: build
         uses: triptixx/action-docker-build@master
         env:
-          test: test_env
+          test: ${INPUT_TMP}
         with:
           repo: alpine-dev
           build_args: ALPINE_TAG=${{ matrix.alpine_tag }}
-          tmp: ${test}
+          tmp: test_env
