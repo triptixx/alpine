@@ -19,4 +19,4 @@ jobs:
       - name: test
         run: |
           echo "${{ toJSON(matrix) }}"
-          echo "${{ matrix.alpine_tag.* }}"
+          echo "${{ toJSON(matrix.alpine_tag) }}"
