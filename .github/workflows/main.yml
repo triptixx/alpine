@@ -13,7 +13,7 @@ jobs:
           - 3.7
           - 3.8
           - 3.9
-          - 3.10latest
+          - 3.10
           - edge
         include:
           - alpine_tag: 3.10
