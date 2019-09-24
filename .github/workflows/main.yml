@@ -19,4 +19,4 @@ jobs:
       - name: test
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "${{ matrix.alpine_tag.0 }}"
+        run: echo "${{ matrix.alpine_tag.split(',')[0] }}"
