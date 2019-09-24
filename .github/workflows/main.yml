@@ -10,13 +10,13 @@ jobs:
     strategy:
       matrix:
         alpine_tag:
-          - '3.7'
-          - '3.8'
-          - '3.9'
-          - '3.10,latest'
-          - 'edge'
+          - ['3.7']
+          - ['3.8']
+          - ['3.9']
+          - ['3.10',latest]
+          - ['edge']
     steps:
       - name: test
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "${{ matrix.alpine_tag.split(',')[0] }}"
+        run: echo "${{ matrix.alpine_tag[0] }}"
