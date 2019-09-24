@@ -19,4 +19,4 @@ jobs:
       - name: test
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix.alpine_tag[0]) }}
-        run: echo "${{ format('Hello {0}', matrix.alpine_tag) }}"
+        run: echo "${{ format('Hello {0}', matrix.alpine_tag[0]) }}"
