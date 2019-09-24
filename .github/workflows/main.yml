@@ -13,10 +13,10 @@ jobs:
           - '3.7'
           - '3.8'
           - '3.9'
-          - 3.10,latest
-          - edge
+          - '3.10,latest'
+          - 'edge'
     steps:
       - name: test
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
+        run: echo "${{ toJson(matrix.alpine_tag) }}"
