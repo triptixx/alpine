@@ -19,4 +19,4 @@ jobs:
           - 'edge'
     steps:
       - name: test
-        run: echo "${{ matrix.alpine_tag.0 }}"
+        run: echo "${{ toJSON(matrix) }}"
