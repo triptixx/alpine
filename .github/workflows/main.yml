@@ -20,9 +20,10 @@ jobs:
         uses: actions/checkout@master
       - name: build
         uses: triptixx/action-docker-build@master
-        env:
-          test: ${INPUT_TMP}
         with:
           repo: alpine-dev
           build_args: ALPINE_TAG=${{ matrix.alpine_tag }}
-          tmp: test_env
+      - name: test
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
