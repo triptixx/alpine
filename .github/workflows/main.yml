@@ -25,6 +25,8 @@ jobs:
           build_args: ALPINE_TAG=${{ matrix.alpine_tag[0] }}
       - name: publish
         uses: triptixx/action-docker-publish@master
+        env:
+          TEST: 'test'
         with:
           docker_username: ${{ secrets.docker_username }}
           docker_password: ${{ secrets.docker_password }}
