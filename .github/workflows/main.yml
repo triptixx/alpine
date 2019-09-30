@@ -23,13 +23,13 @@ jobs:
         with:
           repo: alpine-dev
           build_args: ALPINE_TAG=${{ matrix.alpine_tag[0] }}
+      - name: testvar
+        run: echo ::set-env name=DOCKER_TAG::3.10,latest
       - name: publish
         uses: triptixx/action-docker-publish@master
-        env:
-          TEST: ['3.10', latest]
         with:
           docker_username: ${{ secrets.docker_username }}
           docker_password: ${{ secrets.docker_password }}
           from: alpine-dev
           repo: ${{ secrets.docker_username }}/alpine
-          tags: 'latest'
+          tags: ${DOCKER_TAG%%,*}
