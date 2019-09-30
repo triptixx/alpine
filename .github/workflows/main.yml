@@ -30,4 +30,4 @@ jobs:
           docker_password: ${{ secrets.docker_password }}
           from: alpine-dev
           repo: ${{ secrets.docker_username }}/alpine
-          tags: 'latest'
+          tags: ${{ matrix.alpine_tag }}
