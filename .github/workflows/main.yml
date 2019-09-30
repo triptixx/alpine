@@ -23,3 +23,5 @@ jobs:
         with:
           repo: alpine-dev
           build_args: ALPINE_TAG=${{ matrix.alpine_tag[0] }}
+      - name: publish
+        uses: triptixx/action-docker-publish@master
