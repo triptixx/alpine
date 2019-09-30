@@ -26,5 +26,7 @@ jobs:
       - name: publish
         uses: triptixx/action-docker-publish@master
         with:
+          from: alpine-dev
+          repo: ${{ secrets.docker_username }}/alpine
           docker_username: ${{ secrets.docker_username }}
           docker_password: ${{ secrets.docker_password }}
