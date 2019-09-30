@@ -27,7 +27,7 @@ jobs:
         uses: triptixx/action-docker-build@master
         with:
           repo: alpine-dev
-          build_args: ALPINE_TAG=${{ matrix.alpine_tag }}
+          build_args: ALPINE_TAG=${{ steps.vars.outputs.alpine_tag }}
       - name: publish
         uses: triptixx/action-docker-publish@master
         with:
@@ -35,4 +35,4 @@ jobs:
           docker_password: ${{ secrets.docker_password }}
           from: alpine-dev
           repo: ${{ secrets.docker_username }}/alpine
-          tags: ${{ steps.vars.outputs.alpine_tag }}
+          tags: ${{ matrix.alpine_tag }}
