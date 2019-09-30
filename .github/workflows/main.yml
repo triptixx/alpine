@@ -26,7 +26,8 @@ jobs:
       - name: publish
         uses: triptixx/action-docker-publish@master
         env:
-          TEST: 'test'
+          TESTT: 'test'
+          TEST: ${TESTT}
         with:
           docker_username: ${{ secrets.docker_username }}
           docker_password: ${{ secrets.docker_password }}
