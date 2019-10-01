@@ -28,11 +28,12 @@ jobs:
         with:
           repo: alpine-dev
           build_args: ALPINE_TAG=${{ steps.vars.outputs.alpine_tag }}
-#      - name: test
-#        uses: triptixx/action-docker-test@master
-#        with:
-#          repo: alpine-dev
-#          docker_network_id: test
+      - name: test
+        uses: triptixx/action-docker-test@master
+        with:
+          verbose: true
+          repo: alpine-dev
+          run: su-exec nobody apk --version
       - name: publish
         uses: triptixx/action-docker-publish@master
         with:
