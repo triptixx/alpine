@@ -31,8 +31,8 @@ jobs:
       - name: test
         uses: triptixx/action-docker-test@master
         with:
-          repo: test
-          docker_network_id: ${{ job.container.network }}
+          repo: alpine-dev
+          docker_network_id: test
       - name: publish
         uses: triptixx/action-docker-publish@master
         with:
