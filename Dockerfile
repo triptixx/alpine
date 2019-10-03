@@ -3,7 +3,6 @@ ARG ALPINE_TAG=3.10
 FROM alpine:${ALPINE_TAG}
 
 ARG ALPINE_TAG
-
 ENV ENV="/etc/profile"
 
 LABEL org.label-schema.name="Alpine Linux" \
