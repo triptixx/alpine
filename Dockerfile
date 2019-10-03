@@ -4,12 +4,12 @@ FROM alpine:${ALPINE_TAG}
 
 ARG ALPINE_TAG
 
+ENV ENV="/etc/profile"
+
 LABEL org.label-schema.name="Alpine Linux" \
       org.label-schema.description="Alpine Linux base image" \
       org.label-schema.url="https://github.com/gliderlabs/docker-alpine" \
       org.label-schema.version=${ALPINE_TAG}
-
-ENV ENV="/etc/profile"
 
 SHELL ["/bin/sh", "-exc"]
 
