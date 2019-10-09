@@ -30,7 +30,7 @@ jobs:
         uses: triptixx/action-docker-build@master
         with:
           repo: alpine-dev
-          build_args: ALPINE_TAG=${{ steps.vars.outputs.alpine_tag }}
+          build_args: ALPINE_TAG=${{ steps.vars.outputs.alpine_tag }}, TEST_VAR=${TEST%%,*}
       - name: test
         uses: triptixx/action-docker-test@master
         with:
