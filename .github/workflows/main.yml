@@ -25,12 +25,12 @@ jobs:
         run: |
           ALPINE_TAG=${{ matrix.alpine_tag }}
           echo ::set-output name=alpine_tag::${ALPINE_TAG%%,*}
-          echo ${TEST}
+          echo ${TEST%%,*}
       - name: build
         uses: triptixx/action-docker-build@master
         with:
           repo: alpine-dev
-          build_args: ALPINE_TAG=${{ steps.vars.outputs.alpine_tag }} TEST_VAR=${TEST}
+          build_args: ALPINE_TAG=${{ steps.vars.outputs.alpine_tag }}
       - name: test
         uses: triptixx/action-docker-test@master
         with:
