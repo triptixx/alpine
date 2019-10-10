@@ -15,6 +15,9 @@ jobs:
           - '3.9'
           - '3.10,latest'
           - 'edge'
+    env:
+      TEST: ${{ matrix.alpine_tag }}
+      TEST2: ${TEST}
     steps:
       - name: clone
         uses: actions/checkout@master
