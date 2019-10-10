@@ -26,6 +26,7 @@ jobs:
         run: |
           ALPINE_TAG=${{ matrix.alpine_tag }}
           echo ::set-output name=alpine_tag::${ALPINE_TAG%%,*}
+          echo $TEST2
       - name: build
         uses: triptixx/action-docker-build@master
         with:
