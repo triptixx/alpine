@@ -17,12 +17,13 @@ jobs:
           - 'edge'
     env:
       TEST: ${{ matrix.alpine_tag }}
-      TEST2: ${TEST}
     steps:
       - name: clone
         uses: actions/checkout@master
       - name: set vars
         id: vars
+        env:
+          TEST2: $TEST
         run: |
           ALPINE_TAG=${{ matrix.alpine_tag }}
           echo ::set-output name=alpine_tag::${ALPINE_TAG%%,*}
