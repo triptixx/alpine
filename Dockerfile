@@ -13,6 +13,8 @@ LABEL org.label-schema.name="Alpine Linux" \
 SHELL ["/bin/sh", "-exc"]
 
 RUN apk upgrade --no-cache; \
-    apk add --no-cache su-exec tzdata;
+    apk add --no-cache su-exec tzdata tini;
 
 COPY *.sh /etc/profile.d/
+
+ENTRYPOINT ["/sbin/tini" , "--"]
