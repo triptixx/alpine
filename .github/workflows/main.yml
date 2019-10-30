@@ -5,7 +5,7 @@ on:
       - master
 
 jobs:
-  alpine:
+  alpine-s6:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -26,19 +26,19 @@ jobs:
       - name: build
         uses: triptixx/action-docker-build@master
         with:
-          repo: alpine-dev
+          repo: alpine-s6-dev
           build_args: ALPINE_TAG=${{ steps.vars.outputs.alpine_tag }}
       - name: test
         uses: triptixx/action-docker-test@master
         with:
           verbose: true
-          repo: alpine-dev
-          run: su-exec nobody apk --version
+          repo: alpine-s6-dev
+          run:  s6-setuidgid nobody apk --version
       - name: publish
         uses: triptixx/action-docker-publish@master
         with:
           docker_username: ${{ secrets.docker_username }}
           docker_password: ${{ secrets.docker_password }}
-          from: alpine-dev
-          repo: ${{ secrets.docker_username }}/alpine
+          from: alpine-s6-dev
+          repo: ${{ secrets.docker_username }}/alpine-s6
           tags: ${{ matrix.alpine_tag }}
