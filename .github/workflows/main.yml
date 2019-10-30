@@ -2,7 +2,7 @@ name: docker build
 on:
   push:
     branches:
-      - alpine-s6
+      - master
 
 jobs:
   alpine:
