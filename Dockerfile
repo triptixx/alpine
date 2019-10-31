@@ -28,6 +28,7 @@ COPY --from=builder /output/ /
 
 SHELL ["/bin/sh", "-exc"]
 
-RUN apk upgrade --no-cache;
+RUN apk upgrade --no-cache; \
+    apk add --no-cache tzdata
 
 ENTRYPOINT ["/init"]
