@@ -10,10 +10,10 @@ jobs:
     strategy:
       matrix:
         alpine_tag:
-          - '3.8'
           - '3.9'
           - '3.10'
-          - '3.11,latest'
+          - '3.11'
+          - '3.12,latest'
           - 'edge'
     steps:
       - name: clone
