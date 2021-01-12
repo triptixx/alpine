@@ -1,5 +1,5 @@
 ARG ALPINE_TAG=3.12
-ARG S6_VER=2.1.0.0
+ARG S6_VER=2.1.0.2
 
 FROM alpine:${ALPINE_TAG} AS builder
 
