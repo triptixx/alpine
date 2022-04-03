@@ -19,7 +19,8 @@ COPY *.sh /output/etc/profile.d/
 FROM alpine:${ALPINE_TAG}
 
 ARG ALPINE_TAG
-ENV ENV="/etc/profile"
+ENV ENV="/etc/profile" \
+    PATH="${PATH}:/command"
 
 LABEL org.label-schema.name="Alpine-s6 Linux" \
       org.label-schema.description="Alpine S6-Overlay Linux base image" \
