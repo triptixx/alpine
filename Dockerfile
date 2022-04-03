@@ -9,7 +9,7 @@ WORKDIR /s6-src
 ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_VER}/s6-overlay-noarch.tar.xz .
 ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_VER}/s6-overlay-x86_64.tar.xz .
 RUN mkdir -p /output; \
-    tar Jxpf s6-overlay-noarch.tar.xz -C /output/ \
+    tar Jxpf s6-overlay-noarch.tar.xz -C /output/; \
     tar Jxpf s6-overlay-x86_64.tar.xz -C /output/
 
 COPY *.sh /output/etc/profile.d/
