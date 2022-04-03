@@ -6,9 +6,11 @@ FROM alpine:${ALPINE_TAG} AS builder
 ARG S6_VER
 
 WORKDIR /s6-src
-ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_VER}/s6-overlay-amd64.tar.gz .
+ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_VER}/s6-overlay-noarch.tar.xz .
+ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_VER}/s6-overlay-x86_64.tar.xz .
 RUN mkdir -p /output; \
-    tar xzf s6-overlay-amd64.tar.gz -C /output/
+    tar Jxpf s6-overlay-noarch.tar.xz -C /output/ \
+    tar Jxpf s6-overlay-x86_64.tar.xz -C /output/
 
 COPY *.sh /output/etc/profile.d/
 
