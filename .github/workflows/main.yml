@@ -21,7 +21,7 @@ jobs:
         id: vars
         run: |
           ALPINE_TAG=${{ matrix.alpine_tag }}
-          echo ::set-output name=alpine_tag::${ALPINE_TAG%%,*}
+          echo "alpine_tag=${ALPINE_TAG%%,*}" >> $GITHUB_OUTPUT
       - name: build
         uses: triptixx/action-docker-build@master
         with:
