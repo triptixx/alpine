@@ -41,3 +41,10 @@ jobs:
           from: alpine-s6-dev
           repo: ${{ secrets.docker_username }}/alpine-s6
           tags: ${{ matrix.alpine_tag }}
+      - name: docker-scout
+        uses: docker/scout-action@v1
+        with:
+          dockerhub-user: ${{ secrets.docker_username }}
+          dockerhub-password: ${{ secrets.docker_password }}
+          command: cves
+          image: ${{ secrets.docker_username }}/alpine-s6:${{ steps.vars.outputs.alpine_tag }}
