@@ -47,4 +47,4 @@ jobs:
           dockerhub-user: ${{ secrets.docker_username }}
           dockerhub-password: ${{ secrets.docker_password }}
           command: cves
-          image: ${{ secrets.docker_username }}/alpine:${{ matrix.alpine_tag }}
+          image: ${{ secrets.docker_username }}/alpine:${{ steps.vars.outputs.alpine_tag }}
