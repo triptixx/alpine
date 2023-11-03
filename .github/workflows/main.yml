@@ -42,7 +42,6 @@ jobs:
           repo: ${{ secrets.docker_username }}/alpine
           tags: ${{ matrix.alpine_tag }}
       - name: docker-scout
-        if: ${{ github.event_name == 'pull_request' }}
         uses: docker/scout-action@v1
         with:
           command: cves
