@@ -1,12 +1,11 @@
 [hub]: https://hub.docker.com/r/loxoo/alpine-s6
-[mbdg]: https://microbadger.com/images/loxoo/alpine-s6
 [git]: https://github.com/triptixx/alpine/tree/alpine-s6
-[actions]: https://github.com/triptixx/alpine/actions
+[actions]: https://github.com/triptixx/alpine/actions/workflows/main.yml
 
-# [loxoo/alpine-s6][hub] - Alpine S6-overlay Linux base image
-[![Layers](https://images.microbadger.com/badges/image/loxoo/alpine-s6.svg)][mbdg]
-[![Latest Version](https://images.microbadger.com/badges/version/loxoo/alpine-s6.svg)][hub]
-[![Git Commit](https://images.microbadger.com/badges/commit/loxoo/alpine-s6.svg)][git]
+# [loxoo/alpine-s6][hub] - Alpine Linux base image
+[![Git Commit](https://img.shields.io/github/last-commit/triptixx/alpine/alpine-s6)][git]
+[![Build Status](https://github.com/triptixx/alpine/actions/workflows/main.yml/badge.svg?branch=alpine-s6)][actions]
+[![Latest Version](https://img.shields.io/docker/v/loxoo/alpine-s6/latest)][hub]
+[![Size](https://img.shields.io/docker/image-size/loxoo/alpine-s6/latest)][hub]
 [![Docker Stars](https://img.shields.io/docker/stars/loxoo/alpine-s6.svg)][hub]
 [![Docker Pulls](https://img.shields.io/docker/pulls/loxoo/alpine-s6.svg)][hub]
-[![Build Status](https://github.com/triptixx/alpine/workflows/docker%20build/badge.svg?branch=alpine-s6)][actions]
